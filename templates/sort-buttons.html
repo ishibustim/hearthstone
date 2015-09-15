@@ -1,0 +1,6 @@
+<span class="label">Sort:</span>
+<div class="buttonGroup">
+  <li ng-repeat="(sortName, sort) in sortCtrl.sorts" ng-class="{active: sortCtrl.sort === sort}" ng-click="sortCtrl.setSort(sort)">
+    {{sortName}}
+  </li>
+</div>

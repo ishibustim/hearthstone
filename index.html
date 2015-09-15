@@ -1,0 +1,25 @@
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="style/style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/cardSort.js"></script>
+  <script type="text/javascript" src="js/cardFilter.js"></script>
+  <title>Hearthstone</title>
+</head>
+<body ng-app="Hearthstone" ng-controller="HearthstoneController as hsCtrl">
+  <div class="header">
+    <span class="title">{{hsCtrl.title}}</span>
+    <input type="search" placeholder="Search (cost: attack: health: type: race:)" ng-model="filterCtrl.filter" cardFilter></input>
+    <collectible-checkbox></collectible-checkbox>
+    <sort-buttons></sort-buttons>
+    <span class="info">{{hsCtrl.info}}</span>
+  </div>
+  <div class="main">
+    <div class="card" name="{{card.name}}" ng-repeat="card in hsCtrl.cards | cardSearch:filterCtrl.filter:collectibleCtrl.onlyCollectible | orderBy:sortCtrl.sort">
+      <img width="198px" height="300px" ng-src="{{hsCtrl.imgBase + card.id + hsCtrl.imgSuffix}}" />
+    </div>
+  </div>
+</body>
+</html>
